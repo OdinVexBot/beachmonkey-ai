@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BeachMonkey.ai — Theme: Taproom Chalkboard</title>
+<style>
+  /* Single-theme by design: a chalkboard is dark in any weather. */
+  :root { --board:#232A26; --chalk:#EFE9D8; --chalk-dim:#B9B3A2; --gold:#F0B035; --orange:#E8892B; }
+  * { box-sizing: border-box; }
+  body { margin:0; background: var(--board); color: var(--chalk);
+         background-image: radial-gradient(ellipse at 30% 10%, rgba(255,255,255,0.045), transparent 60%),
+                           radial-gradient(ellipse at 80% 90%, rgba(255,255,255,0.03), transparent 55%);
+         font-family: Seravek, "Gill Sans", Calibri, sans-serif; line-height: 1.6;
+         display:flex; flex-direction:column; align-items:center; padding: 2.5rem 1rem 4rem; }
+  .frame { width:min(660px, 94vw); border: 10px solid #5C4530; border-radius: 6px;
+           box-shadow: inset 0 0 0 2px rgba(255,255,255,0.06), 0 12px 40px rgba(0,0,0,0.5);
+           padding: 2.2rem 1.6rem; display:flex; flex-direction:column; align-items:center; gap:1.8rem; }
+  .script { font-family:"Segoe Script","Brush Script MT",cursive; }
+  .logo { width:130px; height:130px; border-radius:50%; border:6px solid #0E0D0B; object-fit:cover;
+          filter: saturate(0.92); }
+  h1 { font-family:"Cooper Black","Arial Rounded MT Bold",ui-rounded,serif; font-weight:900;
+       font-size: clamp(2rem, 7vw, 3rem); margin:0; color: var(--gold); text-align:center;
+       text-shadow: 0 0 1px rgba(240,176,53,0.6); }
+  .tag { font-size: clamp(1.3rem, 4.5vw, 1.7rem); color: var(--chalk); margin:0; }
+  .rule { width:75%; border:none; border-top:2px dashed rgba(239,233,216,0.35); margin:0; }
+  h2.section { margin:0; color: var(--orange); font-size:1.05rem; letter-spacing:0.22em;
+               text-transform:uppercase; font-weight:700; }
+  .arc { display:flex; gap:1.6rem; flex-wrap:wrap; justify-content:center; text-align:center; }
+  .arc div span { display:block; }
+  .arc .p { font-size:1.15rem; font-weight:700; }
+  .arc .past .p { color: var(--chalk-dim); text-decoration: line-through 2px rgba(185,179,162,0.55); }
+  .arc .now .p { color: var(--gold); }
+  .arc .e { font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--chalk-dim); }
+  .menu { width:100%; display:flex; flex-direction:column; gap:0.9rem; }
+  .item { display:flex; align-items:baseline; gap:0.6rem; }
+  .item .name { font-weight:700; white-space:nowrap; }
+  .item .dots { flex:1; border-bottom:2px dotted rgba(239,233,216,0.35); transform:translateY(-4px); }
+  .item .abv { font-family:ui-monospace,Consolas,monospace; color:var(--gold); white-space:nowrap; font-size:0.85rem; }
+  .item .desc { display:block; font-size:0.88rem; color:var(--chalk-dim); margin-top:0.15rem; }
+  .manifesto { max-width:52ch; font-size:1rem; color:var(--chalk); text-align:center; margin:0; }
+  .links { display:flex; gap:0.8rem; flex-wrap:wrap; justify-content:center; }
+  .links a { color:var(--board); background:var(--gold); text-decoration:none; font-weight:700;
+             padding:0.5rem 1.2rem; border-radius:4px; }
+  .links a:hover, .links a:focus-visible { background:var(--orange); outline:none; }
+  footer { margin-top:1.6rem; font-family:ui-monospace,Consolas,monospace; font-size:0.72rem;
+           color:var(--chalk-dim); text-align:center; line-height:1.9; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <img class="logo" src="../logo.jpg" alt="Beach Monkey badge">
+  <div style="text-align:center">
+    <h1>BeachMonkey.ai</h1>
+    <p class="tag script">Pura Beta</p>
+  </div>
+
+  <div class="arc">
+    <div class="past"><span class="p script">Pura Vida</span><span class="e">the vibe</span></div>
+    <div class="past"><span class="p script">Pura Bebida</span><span class="e">the brewery years</span></div>
+    <div class="now"><span class="p script">Pura Beta</span><span class="e">the AI chapter</span></div>
+  </div>
+
+  <hr class="rule">
+  <h2 class="section">On Tap</h2>
+  <div class="menu">
+    <div>
+      <div class="item"><span class="name">House Agents</span><span class="dots"></span><span class="abv">v0.1 · conditioning</span></div>
+      <span class="desc">Personal AI that actually runs a household — calendars, briefs, backlogs.</span>
+    </div>
+    <div>
+      <div class="item"><span class="name">Small-Batch Builds</span><span class="dots"></span><span class="abv">v0.2 · in primary</span></div>
+      <span class="desc">Practical AI for small businesses — owned, useful, no hype.</span>
+    </div>
+    <div>
+      <div class="item"><span class="name">Field Notes</span><span class="dots"></span><span class="abv">v0.3 · recipe stage</span></div>
+      <span class="desc">Dispatches from the new phase — what works, what foams over.</span>
+    </div>
+  </div>
+
+  <hr class="rule">
+  <p class="manifesto">Started in 2018 as a brewery. The beer taught the process worth
+  keeping: good ingredients, patient fermentation, generous sharing. After decades of
+  shipping software, the founder is trading the campus badge for the beach — same
+  monkey, different ferment. Everything ships as a beta. That's the philosophy.</p>
+
+  <nav class="links">
+    <a href="https://www.linkedin.com/in/odinanderson/">The founder</a>
+    <a href="https://www.instagram.com/beachmonkey.beer/">The brewery years</a>
+    <a href="mailto:hello@beachmonkey.ai">Say hi</a>
+  </nav>
+</div>
+<footer>BEACHMONKEY · EST. 2018 · WASHINGTON STATE<br>site v0.1.0-beta — forever fermenting · <a href="index.html" style="color:var(--gold)">← options</a></footer>
+</body>
+</html>
