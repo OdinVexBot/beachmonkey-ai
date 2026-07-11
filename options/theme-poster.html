@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BeachMonkey.ai — Theme: Surf Poster</title>
+<style>
+  :root {
+    --cream:#F4ECDB; --ink:#171310; --gold:#EFAF25; --orange:#E68617; --deep:#B96208;
+  }
+  @media (prefers-color-scheme: dark) { :root { --cream:#22262B; --ink:#F4ECDB; } }
+  :root[data-theme="dark"]  { --cream:#22262B; --ink:#F4ECDB; }
+  :root[data-theme="light"] { --cream:#F4ECDB; --ink:#171310; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--cream); color:var(--ink);
+         font-family: Seravek, "Gill Sans", Calibri, sans-serif; line-height:1.55; }
+  .groovy { font-family:"Cooper Black","Arial Rounded MT Bold",ui-rounded,serif; font-weight:900; }
+
+  /* Band 1: split hero */
+  .hero { display:grid; grid-template-columns: 1fr 1.2fr; min-height: 74vh; align-items:center;
+          gap: 2rem; padding: 3rem clamp(1rem,6vw,5rem); }
+  .hero .badge { width:min(340px, 38vw); justify-self:end; border-radius:50%;
+                 border:12px solid #0E0D0B; object-fit:cover; aspect-ratio:1;
+                 box-shadow: 14px 14px 0 var(--gold); }
+  .hero h1 { font-size: clamp(2.6rem, 7vw, 5rem); line-height:0.98; margin:0; text-wrap:balance; }
+  .hero h1 em { font-style:normal; color:var(--orange); display:block; }
+  .hero p.sub { font-size:1.1rem; max-width:44ch; margin:1.2rem 0 0; }
+  .hero .est { font-family:ui-monospace,Consolas,monospace; letter-spacing:0.2em; font-size:0.75rem;
+               text-transform:uppercase; color:var(--deep); display:block; margin-bottom:0.9rem; }
+  @media (max-width: 760px) {
+    .hero { grid-template-columns:1fr; text-align:center; min-height:auto; }
+    .hero .badge { justify-self:center; width:min(240px,64vw); }
+  }
+
+  /* Band 2: gold arc strip */
+  .strip { background: linear-gradient(180deg, var(--gold), var(--orange)); color:#171310;
+           padding: 2.2rem 1rem; display:flex; gap:2.5rem; justify-content:center; flex-wrap:wrap; }
+  .strip div { text-align:center; }
+  .strip .p { font-size:1.35rem; display:block; }
+  .strip .past .p { opacity:0.55; text-decoration: line-through 3px rgba(23,19,16,0.5); }
+  .strip .e { font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; }
+
+  /* Band 3: fermenting posters */
+  .posters { padding: 3.5rem clamp(1rem,6vw,5rem); display:grid;
+             grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap:1.4rem; }
+  .poster { border: 4px solid var(--ink); padding: 1.4rem 1.2rem; border-radius: 4px;
+            background: transparent; display:flex; flex-direction:column; gap:0.5rem;
+            box-shadow: 8px 8px 0 var(--orange); }
+  .poster .v { font-family:ui-monospace,Consolas,monospace; color:var(--deep); font-size:0.8rem; }
+  .poster h3 { margin:0; font-size:1.25rem; }
+  .poster p { margin:0; font-size:0.92rem; }
+
+  /* Band 4: footer */
+  .foot { background:#171310; color:#F4ECDB; padding:2.6rem 1rem 3rem; text-align:center;
+          display:flex; flex-direction:column; gap:1.2rem; align-items:center; }
+  .foot nav { display:flex; gap:0.9rem; flex-wrap:wrap; justify-content:center; }
+  .foot a { color:#F4ECDB; border:2px solid var(--gold); border-radius:999px; text-decoration:none;
+            padding:0.5rem 1.3rem; font-weight:700; }
+  .foot a:hover, .foot a:focus-visible { background:var(--gold); color:#171310; outline:none; }
+  .foot .fine { font-family:ui-monospace,Consolas,monospace; font-size:0.72rem; opacity:0.75; }
+</style>
+</head>
+<body>
+<section class="hero">
+  <img class="badge" src="../logo.jpg" alt="Beach Monkey badge">
+  <div>
+    <span class="est">Est. 2018 · Washington State</span>
+    <h1 class="groovy">Beach<br>Monkey<em>.ai — Pura Beta.</em></h1>
+    <p class="sub">A brewery-born brand pointing itself at AI. Small batches, salt air,
+    patient fermentation — now applied to agents and automations instead of ales.
+    Everything ships beta. Everything gets better.</p>
+  </div>
+</section>
+
+<section class="strip">
+  <div class="past"><span class="p groovy">Pura Vida</span><span class="e">the vibe</span></div>
+  <div class="past"><span class="p groovy">Pura Bebida</span><span class="e">the brewery years</span></div>
+  <div class="now"><span class="p groovy">Pura Beta</span><span class="e">the AI chapter</span></div>
+</section>
+
+<section class="posters">
+  <div class="poster">
+    <span class="v">v0.1.x · conditioning</span>
+    <h3 class="groovy">House Agents</h3>
+    <p>Personal AI that actually runs a household — calendars, briefs, backlogs.</p>
+  </div>
+  <div class="poster">
+    <span class="v">v0.2.x · in primary</span>
+    <h3 class="groovy">Small-Batch Builds</h3>
+    <p>Practical AI for small businesses — owned, useful, no hype.</p>
+  </div>
+  <div class="poster">
+    <span class="v">v0.3.x · recipe stage</span>
+    <h3 class="groovy">Field Notes</h3>
+    <p>Dispatches from the new phase — what works, what foams over.</p>
+  </div>
+</section>
+
+<footer class="foot">
+  <nav>
+    <a href="https://www.linkedin.com/in/odinanderson/">The founder</a>
+    <a href="https://www.instagram.com/beachmonkey.beer/">The brewery years</a>
+    <a href="mailto:hello@beachmonkey.ai">Say hi</a>
+  </nav>
+  <span class="fine">BEACHMONKEY · EST. 2018 · site v0.1.0-beta — forever fermenting · <a href="index.html" style="border:none;padding:0;color:var(--gold)">← options</a></span>
+</footer>
+</body>
+</html>
