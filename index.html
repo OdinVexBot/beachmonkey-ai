@@ -4,295 +4,92 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BeachMonkey.ai — Pura Beta</title>
-<meta name="description" content="BeachMonkey's next chapter: small-batch AI, brewed on the Washington coast. Pura Vida. Pura Bebida. Pura Beta.">
+<meta name="description" content="BeachMonkey's next chapter: small-batch AI, brewed on the Washington coast since 2018. Pura Vida. Pura Bebida. Pura Beta.">
+<link rel="icon" href="logo.jpg">
 <style>
-  /* Palette derived from the Beach Monkey badge: gold-to-amber gradient,
-     black rim/band, cream face. Dark ground = the charcoal the logo lives on. */
-  :root {
-    --paper: #F4ECDB;
-    --ink: #171310;
-    --ink-soft: #6C5F4C;
-    --surf: #C96A10;   /* label amber — links, versions, .ai */
-    --sunset: #E89C1A; /* label gold — tagline, highlights */
-    --foam: #FBF6EA;
-    --line: #E2D4B2;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --paper: #22262B;
-      --ink: #F4ECDB;
-      --ink-soft: #A89E8B;
-      --surf: #ED8B2D;
-      --sunset: #F5B94A;
-      --foam: #2A2F36;
-      --line: #3B4148;
-    }
-  }
-  :root[data-theme="dark"] {
-    --paper: #22262B;
-    --ink: #F4ECDB;
-    --ink-soft: #A89E8B;
-    --surf: #ED8B2D;
-    --sunset: #F5B94A;
-    --foam: #2A2F36;
-    --line: #3B4148;
-  }
-  :root[data-theme="light"] {
-    --paper: #F4ECDB;
-    --ink: #171310;
-    --ink-soft: #6C5F4C;
-    --surf: #C96A10;
-    --sunset: #E89C1A;
-    --foam: #FBF6EA;
-    --line: #E2D4B2;
-  }
-
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; }
-  body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: Seravek, "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-    line-height: 1.6;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-  }
-  .display {
-    font-family: ui-rounded, "Hiragino Maru Gothic ProN", "Arial Rounded MT Bold", "Trebuchet MS", sans-serif;
-  }
-  .batch {
-    font-family: ui-monospace, "Cascadia Code", Consolas, "SF Mono", Menlo, monospace;
-    font-size: 0.78rem;
-    letter-spacing: 0.06em;
-    color: var(--ink-soft);
-  }
-
-  main {
-    width: min(680px, 92vw);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2.75rem;
-    padding: 3.5rem 0 2rem;
-    text-align: center;
-  }
-
-  /* ---- Badge: the real round Beach Monkey logo (logo.jpg, cropped from
-          the brewery-era mark). Circle mask trims the source corners. ---- */
-  .badge {
-    width: 176px;
-    height: 176px;
-    border-radius: 50%;
-    object-fit: cover;
-    /* Rebuilt round rim: the source photo's border was clipped by
-       Instagram's circular overlay, so the ring is drawn here instead. */
-    border: 10px solid #0E0D0B;
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
-    animation: bob 7s ease-in-out infinite;
-  }
-  @keyframes bob {
-    0%, 100% { transform: translateY(0) rotate(-1.5deg); }
-    50%      { transform: translateY(-7px) rotate(1.5deg); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .badge { animation: none; }
-  }
-
-  header { display: flex; flex-direction: column; align-items: center; gap: 1.1rem; }
-  .wordmark {
-    font-size: clamp(2.4rem, 8vw, 3.6rem);
-    font-weight: 800;
-    letter-spacing: -0.015em;
-    margin: 0;
-    text-wrap: balance;
-  }
-  .wordmark .ai { color: var(--surf); }
-  .tagline {
-    font-size: clamp(1.5rem, 5vw, 2rem);
-    font-weight: 700;
-    color: var(--sunset);
-    margin: 0;
-    letter-spacing: 0.01em;
-  }
-
-  /* three-chapter arc */
-  .arc {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.6rem 1.6rem;
-    padding: 1.1rem 1.4rem;
-    border-block: 1px solid var(--line);
-  }
-  .arc .chapter { display: flex; flex-direction: column; gap: 0.1rem; min-width: 8.5rem; }
-  .arc .phrase { font-weight: 700; font-size: 1.05rem; }
-  .arc .past .phrase { color: var(--ink-soft); }
-  .arc .now .phrase { color: var(--surf); }
-  .arc .era {
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--ink-soft);
-  }
-
-  .manifesto {
-    max-width: 58ch;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    font-size: 1.06rem;
-  }
-  .manifesto p { margin: 0; }
-  .manifesto strong { color: var(--surf); }
-
-  /* now fermenting = brew log meets release notes */
-  section.fermenting { width: 100%; display: flex; flex-direction: column; gap: 0.9rem; }
-  .fermenting h2 {
-    font-size: 0.82rem;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    color: var(--ink-soft);
-    margin: 0;
-    font-weight: 600;
-  }
-  .brewlog {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.65rem;
-    text-align: left;
-  }
-  .brewlog li {
-    display: flex;
-    align-items: baseline;
-    gap: 0.9rem;
-    background: var(--foam);
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 0.75rem 1rem;
-  }
-  .brewlog .ver { white-space: nowrap; color: var(--surf); }
-  .brewlog .what { flex: 1; }
-  .brewlog .status {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--sunset);
-    white-space: nowrap;
-  }
-
-  nav.links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; }
-  nav.links a {
-    color: var(--ink);
-    text-decoration: none;
-    border: 1.5px solid var(--surf);
-    border-radius: 999px;
-    padding: 0.5rem 1.25rem;
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: background 160ms ease, color 160ms ease;
-  }
-  nav.links a:hover, nav.links a:focus-visible {
-    background: var(--surf);
-    color: var(--paper);
-    outline: none;
-  }
-  nav.links a:focus-visible { box-shadow: 0 0 0 3px color-mix(in srgb, var(--surf) 35%, transparent); }
-
-  footer {
-    width: min(680px, 92vw);
-    border-top: 1px solid var(--line);
-    padding: 1.4rem 0 2.2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-    align-items: center;
-    text-align: center;
-  }
-
-  .wave { width: min(680px, 92vw); height: 26px; color: var(--surf); opacity: 0.55; }
+  /* Single-theme by design: an amber CRT is dark, always. */
+  :root { --bg:#191512; --amber:#F0A81F; --amber-dim:#9A7231; --cream:#F0E7D2; --green:#8FBE5A; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--amber);
+         font-family: ui-monospace, "Cascadia Code", Consolas, "SF Mono", Menlo, monospace;
+         font-size: 0.95rem; line-height:1.75; display:flex; justify-content:center;
+         padding: 2.5rem 1rem 4rem;
+         text-shadow: 0 0 8px rgba(240,168,31,0.28); }
+  main { width:min(720px,94vw); }
+  .dim { color:var(--amber-dim); text-shadow:none; }
+  .ok { color:var(--green); }
+  .cream { color:var(--cream); }
+  .logo-row { display:flex; align-items:center; gap:1.4rem; margin: 1.2rem 0 1.8rem; flex-wrap:wrap; }
+  .logo-row img { width:110px; height:110px; border-radius:50%; border:5px solid #000;
+                  object-fit:cover; filter: sepia(0.25) saturate(1.1); }
+  h1 { font-size: clamp(1.4rem, 5vw, 2rem); margin:0; color:var(--cream);
+       text-shadow: 0 0 10px rgba(240,231,210,0.25); }
+  h1 .c { color:var(--amber); }
+  .block { margin: 1.6rem 0; }
+  .prompt::before { content: "$ "; color: var(--amber-dim); }
+  .out { color: var(--cream); text-shadow:none; }
+  .cursor { display:inline-block; width:0.6em; height:1.1em; background:var(--amber);
+            vertical-align:text-bottom; animation: blink 1.1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity:0; } }
+  @media (prefers-reduced-motion: reduce) { .cursor { animation:none; } }
+  a { color: var(--amber); text-decoration-color: var(--amber-dim); }
+  a:hover, a:focus-visible { color: var(--cream); outline:none; }
+  table { border-collapse: collapse; width:100%; font-size:0.88rem; }
+  td { padding: 0.2rem 0.9rem 0.2rem 0; vertical-align:top; }
+  .bar { color: var(--amber-dim); }
 </style>
 </head>
 <body>
 <main>
-  <header>
-    <img class="badge" src="logo.jpg" width="560" height="560"
-         alt="Beach Monkey round badge — Pura Bebida, Est. 2018">
+  <p class="dim">BeachMonkey BIOS v2018.1 … OK<br>mounting /brewery … <span class="ok">archived</span><br>mounting /ai … <span class="ok">ready</span></p>
 
-    <p class="batch">BATCH 001 · SMALL-BATCH AI · EST. 2018</p>
-    <h1 class="wordmark display">BeachMonkey<span class="ai">.ai</span></h1>
-    <p class="tagline display">Pura Beta.</p>
-  </header>
-
-  <div class="arc" role="list" aria-label="The three chapters">
-    <div class="chapter past" role="listitem">
-      <span class="phrase display">Pura Vida</span>
-      <span class="era">the vibe</span>
-    </div>
-    <div class="chapter past" role="listitem">
-      <span class="phrase display">Pura Bebida</span>
-      <span class="era">the brewery years</span>
-    </div>
-    <div class="chapter now" role="listitem">
-      <span class="phrase display">Pura Beta</span>
-      <span class="era">the AI chapter</span>
+  <div class="logo-row">
+    <img src="logo.jpg" alt="Beach Monkey badge">
+    <div>
+      <h1>beachmonkey<span class="c">.ai</span></h1>
+      <p style="margin:0" class="cream">// Pura Beta — est. 2018, rebooted 2026</p>
     </div>
   </div>
 
-  <div class="manifesto">
-    <p>BeachMonkey started in 2018 as a brewery — small batches, salt air, no
-    hurry. The beer taught us the only process worth keeping: <strong>start with
-    good ingredients, ferment patiently, share generously.</strong></p>
-    <p>After decades of shipping software for one of the world's biggest tech
-    companies, our founder is trading the campus badge for the beach — and
-    pointing the brand at what he's always done on the side: building things.
-    This time, with AI.</p>
-    <p>Same monkey. Same beach. Different ferment. Everything here ships as a
-    beta, stays curious, and gets better with every batch. That's not a
+  <div class="block">
+    <p class="prompt">history --brand</p>
+    <table class="out">
+      <tr><td class="dim">2018</td><td>Pura Vida <span class="dim">— the vibe</span></td></tr>
+      <tr><td class="dim">2018–25</td><td>Pura Bebida <span class="dim">— the brewery years</span></td></tr>
+      <tr><td class="dim">2026→</td><td><b>Pura Beta</b> <span class="dim">— the AI chapter</span></td></tr>
+    </table>
+  </div>
+
+  <div class="block">
+    <p class="prompt">cat MANIFESTO.md</p>
+    <p class="out">Started as a brewery: small batches, salt air, no hurry. The beer
+    taught the only process worth keeping — good ingredients, patient fermentation,
+    generous sharing. After decades shipping software at planetary scale, the founder
+    is trading the campus badge for the beach and pointing the brand at AI. Same
+    monkey. Different ferment. Everything here ships as a beta. That's not a
     disclaimer — it's the philosophy.</p>
   </div>
 
-  <svg class="wave" viewBox="0 0 680 26" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M0 16 Q 42 4 85 16 T 170 16 T 255 16 T 340 16 T 425 16 T 510 16 T 595 16 T 680 16"
-          fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-  </svg>
+  <div class="block">
+    <p class="prompt">brew status --fermenting</p>
+    <table class="out">
+      <tr><td class="dim">v0.1.x</td><td>house-agents</td><td class="bar">[███░░░░░░░]</td><td class="dim">conditioning</td></tr>
+      <tr><td class="dim">v0.2.x</td><td>small-batch-builds</td><td class="bar">[██░░░░░░░░]</td><td class="dim">in&nbsp;primary</td></tr>
+      <tr><td class="dim">v0.3.x</td><td>field-notes</td><td class="bar">[█░░░░░░░░░]</td><td class="dim">recipe&nbsp;stage</td></tr>
+    </table>
+  </div>
 
-  <section class="fermenting">
-    <h2>Now fermenting</h2>
-    <ul class="brewlog">
-      <li>
-        <span class="ver batch">v0.1.x</span>
-        <span class="what">Personal AI agents that actually run a household — calendars, briefs, backlogs</span>
-        <span class="status">conditioning</span>
-      </li>
-      <li>
-        <span class="ver batch">v0.2.x</span>
-        <span class="what">Small-batch AI builds for small businesses — practical, owned, no hype</span>
-        <span class="status">in primary</span>
-      </li>
-      <li>
-        <span class="ver batch">v0.3.x</span>
-        <span class="what">Field notes from the new phase — what works, what foams over</span>
-        <span class="status">recipe stage</span>
-      </li>
-    </ul>
-  </section>
+  <div class="block">
+    <p class="prompt">ls /connect</p>
+    <p class="out">
+      <a href="https://www.linkedin.com/in/odinanderson/">founder.link</a> ·
+      <a href="https://www.instagram.com/beachmonkey.beer/">brewery-years.gram</a> ·
+      <a href="mailto:hello@beachmonkey.ai">say-hi.mail</a>
+    </p>
+  </div>
 
-  <nav class="links" aria-label="Connect">
-    <a href="https://www.linkedin.com/in/odinanderson/" rel="me">The founder's story</a>
-    <a href="https://www.instagram.com/beachmonkey.beer/" rel="me">The brewery years</a>
-    <a href="mailto:hello@beachmonkey.ai">Say hi</a>
-  </nav>
+  <p class="dim">BEACHMONKEY · EST. 2018 · WASHINGTON STATE — site v0.1.0-beta, forever fermenting</p>
+  <p class="prompt">next<span class="cursor"></span></p>
 </main>
-
-<footer>
-  <span class="batch">BeachMonkey · registered in Washington State</span>
-  <span class="batch">site v0.1.0-beta — forever fermenting</span>
-</footer>
 </body>
 </html>
